@@ -1,0 +1,16 @@
+bootstrap.servers=kafka01-prod01.messagehub.services.us-south.bluemix.net:9093,kafka02-prod01.messagehub.services.us-south.bluemix.net:9093
+acks=all
+retries=0
+batch.size=16384
+auto.commit.interval.ms=1000
+linger.ms=0
+security.protocol=SASL_SSL
+ssl.protocol=TLSv1.2
+ssl.enabled.protocols=TLSv1.2
+ssl.truststore.location = D:\\jre1.8.0_65\\lib\\security
+ssl.truststore.password=V7Y72Q6m4U8Qba9YMLWvY0aSo6O31GFK
+ssl.truststore.type=JKS
+key.serializer=org.apache.kafka.common.serialization.StringSerializer
+value.serializer=com.kafka.util.NotificationEncoder
+ssl.endpoint.identification.algorithm=HTTPS
+block.on.buffer.full=true
