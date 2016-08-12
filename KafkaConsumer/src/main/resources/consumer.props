@@ -7,9 +7,14 @@ auto.commit.interval.ms=2000
 # fast session timeout makes it more fun to play with failover
 session.timeout.ms=30000
 
-# These buffer sizes seem to be needed to avoid consumer switching to
-# a mode where it processes one bufferful every 5 seconds with multiple
-# timeouts along the way.  No idea why this happens.
+security.protocol=SASL_SSL
+ssl.protocol=TLSv1.2
+ssl.enabled.protocols=TLSv1.2
+ssl.truststore.location = C:\\Program Files\\Java\\jdk1.7.0_79\\jre\\lib\\security\\cacerts
+ssl.truststore.password=changeit
+ssl.truststore.type=JKS
+ssl.endpoint.identification.algorithm=HTTPS
+
 fetch.min.bytes=5000
 block.on.buffer.full=true
 receive.buffer.bytes=262144

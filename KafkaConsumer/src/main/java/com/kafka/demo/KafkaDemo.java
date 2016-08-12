@@ -1,5 +1,6 @@
 package com.kafka.demo;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,8 +12,9 @@ import com.kafka.consumer.ConsumerLoop;
 
 public class KafkaDemo {
 	public static void main(String[] args) { 
+		System.setProperty("java.security.auth.login.config", "D:\\Kohls Softwares" + File.separator + "jaas.conf");
 		  int numConsumers = 2;
-		  String groupId = "consumer-tutorial-group";
+		  String groupId = "test";
 		  List<String> topics = Arrays.asList("testNotif");
 		  final ExecutorService executor = Executors.newFixedThreadPool(numConsumers);
 		  /*			  PrintWriter out = null;

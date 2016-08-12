@@ -21,6 +21,7 @@ public class ConsumerLoop implements Runnable {
 	  private final List<String> topics;
 	  private final int id;
 	  PrintWriter out;
+	  private static long count = 0;
 	  public ConsumerLoop(int id,
 	                      String groupId, 
 	                      List<String> topics/*,PrintWriter out*/) {
@@ -52,11 +53,16 @@ public class ConsumerLoop implements Runnable {
 	          data.put("partition", record.partition());
 	          data.put("offset", record.offset());
 	          data.put("value", record.value());
-	         out.println(this.id + ": " + data.toString());*/
-	         //out.println(record.partition() + ": " + new Gson().toJson(record.value(),Notification.class));
+	         System.out.println(this.id + ": " + data.toString());
+	         System.out.println(record.partition() + ": " + new Gson().toJson(record.value(),Notification.class));
+	        	System.out.println(new Date() + " : "+ (record.value()));*/
+	        	//System.out.println("partition :" +record.partition());
 	        }
-	        System.out.println(new Date() + " : "+ (records.count()));
+	        count+=records.count();
+	        System.out.println(new Date() + " : "+ (count));
+	        
 	      }
+	      
 	    } catch (WakeupException e) {
 	      // ignore for shutdown 
 	    } finally {

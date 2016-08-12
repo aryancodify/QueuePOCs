@@ -4,15 +4,16 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import com.kafka.beans.Notification;
 import com.kafka.producer.Producer;
 
 public class KafkaDemo {
-public static void main(String[] args) {
+public static void main(String[] args) throws InterruptedException, ExecutionException {
 	/*ExecutorService executorService = Executors.newFixedThreadPool(10);
 	List<Notification> notifications = new  ArrayList<Notification>();*/
-	System.setProperty("java.security.auth.login.config", "D:\\IBM Bluemix POC" + File.separator + "jaas.conf");
+	System.setProperty("java.security.auth.login.config", "D:\\Kohls Softwares" + File.separator + "jaas.conf");
 	List<String[]> dummyList = new ArrayList<String[]>(0);
 	
 	for(int i=0;i<5;i++){

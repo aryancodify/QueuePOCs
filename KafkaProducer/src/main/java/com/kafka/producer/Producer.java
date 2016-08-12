@@ -1,13 +1,14 @@
 package com.kafka.producer;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
 
 import com.google.common.io.Resources;
 import com.kafka.beans.Notification;
@@ -24,7 +25,7 @@ public class Producer /*implements Runnable*/{
 		init();
 	}*/
 	public void init(){
-		try (InputStream props = Resources.getResource("producer.props").openStream()) {
+		try (InputStream props = new FileInputStream("D:\\Kohls Softwares\\producer.props")) {
 		Properties properties = new Properties();
 		properties.load(props);
 		producer = new KafkaProducer<String,Notification>(properties);
@@ -40,7 +41,10 @@ public class Producer /*implements Runnable*/{
 		}
 		
 	}*/
-	public void sendNotification(Notification notification){
-		producer.send(new ProducerRecord<String, Notification>("testNotif", notification));
+	public void sendNotification(Notification notification) throws InterruptedException, ExecutionException{
+		RecordMetadata recordMetadata = producer.send(new ProducerRecord<String, Notification>("testNotif", notification)).get();
+		 /*System.out.println("topic where message is published : " + recordMetadata.topic());
+	      System.out.println("partition where message is published : " + recordMetadata.partition());
+	      System.out.println("message offset # : " + recordMetadata.offset());*/
 	}
 }
